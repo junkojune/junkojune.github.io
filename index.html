@@ -1,30 +1,265 @@
-
-<!DOCTYPE html>
+html = '''<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <style>
-        body {
-            background: #171321;
-            color: #eee8ff;
-            font-family: Arial, sans-serif;
-            display: grid;
-            place-items: center;
-            min-height: 100vh;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PoE 3.30 — Campaign Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f6f2;
+    --panel:#ffffff;
+    --text:#2b2926;
+    --muted:#8b867d;
+    --line:#e5e1d8;
+    --accent:#8f3b2f;
+    --gem:#c0392b;        /* skill gems */
+    --book:#a97c00;       /* book of skill */
+    --trial:#7d5ba6;      /* labyrinth trial */
+    --boss:#2b2926;
+  }
+  [data-theme="dark"]{
+    --bg:#141311;
+    --panel:#1d1c1a;
+    --text:#e6e2d9;
+    --muted:#8f8a81;
+    --line:#2e2c28;
+    --accent:#d98c7a;
+    --gem:#e06a55;
+    --book:#d9b24a;
+    --trial:#b39ddb;
+    --boss:#f0ece2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    font-size:17px;
+    line-height:1.7;
+    transition:background .25s,color .25s;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:0 20px;}
 
-        h1 {
-            color: #b99aff;
-        }
-    </style>
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:10;
+    background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar{display:flex; align-items:center; justify-content:space-between; height:52px;}
+  .logo{font-weight:700; font-size:14px; letter-spacing:.08em; text-transform:uppercase;}
+  .logo span{color:var(--accent);}
+  #themeBtn{
+    background:none; border:1px solid var(--line); color:var(--muted);
+    font:inherit; font-size:13px; padding:5px 12px; border-radius:999px; cursor:pointer;
+  }
+  #themeBtn:hover{color:var(--text); border-color:var(--muted);}
+
+  main{padding:48px 0 80px;}
+
+  h1{font-size:30px; font-weight:700; letter-spacing:-.01em; margin-bottom:8px;}
+  .sub{color:var(--muted); font-size:15px; margin-bottom:36px;}
+
+  /* ---------- legend ---------- */
+  .legend{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:16px 20px; font-size:14px; color:var(--muted); margin-bottom:44px;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .legend b{color:var(--text); font-weight:600;}
+  .lg-row{display:flex; flex-wrap:wrap; gap:8px 18px; align-items:center;}
+  .lg-item{display:flex; align-items:center; gap:6px;}
+  .dot{width:10px; height:10px; border-radius:3px; display:inline-block;}
+
+  /* ---------- act ---------- */
+  .act-head{display:flex; align-items:baseline; justify-content:space-between; border-bottom:2px solid var(--text); padding-bottom:10px; margin-bottom:28px;}
+  .act-head h2{font-size:24px; font-weight:700;}
+  .progress{font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums;}
+
+  h3{
+    font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); margin:36px 0 12px;
+    display:flex; align-items:center; gap:10px;
+  }
+  h3::after{content:""; flex:1; height:1px; background:var(--line);}
+
+  /* ---------- steps ---------- */
+  ol.steps{list-style:none; counter-reset:step;}
+  ol.steps li{
+    counter-increment:step;
+    display:flex; align-items:flex-start; gap:12px;
+    padding:9px 4px; border-bottom:1px dashed var(--line);
+  }
+  ol.steps li:last-child{border-bottom:none;}
+  ol.steps li::before{
+    content:counter(step);
+    min-width:1.7em; text-align:right;
+    color:var(--muted); font-size:13px; font-weight:600;
+    padding-top:3px; font-variant-numeric:tabular-nums;
+  }
+  ol.steps input[type="checkbox"]{
+    appearance:none; width:18px; height:18px; margin-top:5px; flex-shrink:0;
+    border:1.5px solid var(--muted); border-radius:5px; cursor:pointer;
+    display:grid; place-content:center; transition:all .15s;
+  }
+  ol.steps input[type="checkbox"]::before{
+    content:""; width:11px; height:11px; transform:scale(0);
+    clip-path:polygon(14% 44%,0 65%,50% 100%,100% 16%,80% 0%,43% 62%);
+    background:var(--bg); transition:transform .12s;
+  }
+  ol.steps input[type="checkbox"]:checked{background:var(--accent); border-color:var(--accent);}
+  ol.steps input[type="checkbox"]:checked::before{transform:scale(1);}
+  ol.steps li:has(input:checked) .content{color:var(--muted); text-decoration:line-through; text-decoration-color:var(--line);}
+  .content{flex:1;}
+  .content small{color:var(--muted);}
+
+  /* ---------- color coding ---------- */
+  .gem{color:var(--gem); font-weight:600;}                       /* skill gems */
+  .book{color:var(--book); font-weight:600;}                      /* book of skill */
+  .trial{color:var(--trial); font-weight:600;}                  /* trial */
+  .boss{color:var(--boss); font-weight:700;}                     /* bosses */
+  .npc{color:var(--muted); font-style:italic;}                    /* vendors */
+  .npc b{font-style:normal; font-weight:600; color:var(--text);}
+
+  .badge{
+    display:inline-block; font-size:11px; font-weight:700; letter-spacing:.05em;
+    color:var(--muted); background:var(--panel); border:1px solid var(--line);
+    border-radius:4px; padding:0 6px; line-height:1.7; vertical-align:1px;
+    cursor:help; user-select:none; margin-left:4px; white-space:nowrap;
+  }
+
+  footer{color:var(--muted); font-size:13px; text-align:center; margin-top:64px;}
+
+  @media (max-width:520px){
+    body{font-size:16px;}
+    h1{font-size:25px;}
+  }
+</style>
 </head>
 <body>
-    <div>
-        <h1>Hello, world! 🐈</h1>
-        <p>My first website on GitHub Pages.</p>
+
+<header>
+  <div class="wrap bar">
+    <div class="logo">PoE <span>3.30</span> · Campaign</div>
+    <button id="themeBtn" title="Toggle theme">◐ theme</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <h1>League Start Campaign Guide</h1>
+  <p class="sub">Step by step: where to go, what to grab, who to buy from. Checkboxes are saved in your browser.</p>
+
+  <div class="legend">
+    <div class="lg-row">
+      <div class="lg-item"><span class="dot" style="background:var(--gem)"></span><span><b>red</b> — skill gem</span></div>
+      <div class="lg-item"><span class="dot" style="background:var(--book)"></span><span><b>gold</b> — Book of Skill (+2 passive points)</span></div>
+      <div class="lg-item"><span class="dot" style="background:var(--trial)"></span><span><b>purple</b> — Labyrinth Trial</span></div>
+      <div class="lg-item"><span><b>bold</b> — boss</span></div>
     </div>
+    <div class="lg-row">
+      <div class="lg-item"><span class="badge">wp</span> waypoint</div>
+      <div class="lg-item"><span class="badge">cs</span> log out to character selection (relog)</div>
+      <div class="lg-item"><span class="badge">ho</span> open hideout</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="act-head">
+      <h2>Act 1</h2>
+      <span class="progress" id="progress"></span>
+    </div>
+
+    <h3>Camp</h3>
+    <ol class="steps">
+      <li><label><input type="checkbox" id="s01"><span class="content">The Twilight Strand — run through to town</span></label></li>
+      <li><label><input type="checkbox" id="s02"><span class="content"><b>Lioneye's Watch</b> · <span class="npc"><b>Tarkleigh</b>:</span> <span class="gem">Cobra Lash</span></span></label></li>
+    </ol>
+
+    <h3>Hailrake &amp; level 4 shopping</h3>
+    <ol class="steps">
+      <li><label><input type="checkbox" id="s03"><span class="content">The Coast</span></label></li>
+      <li><label><input type="checkbox" id="s04"><span class="content">The Mud Flats</span></label></li>
+      <li><label><input type="checkbox" id="s05"><span class="content">The Submerged Passage <span class="badge">wp</span></span></label></li>
+      <li><label><input type="checkbox" id="s06"><span class="content">The Coast — back through the waypoint</span></label></li>
+      <li><label><input type="checkbox" id="s07"><span class="content">The Tidal Island → <span class="boss">Hailrake</span> <span class="badge">cs</span></span></label></li>
+      <li><label><input type="checkbox" id="s08"><span class="content"><span class="npc"><b>Tarkleigh</b>:</span> <span class="gem">Frostblink</span> (lvl 4), check items</span></label></li>
+      <li><label><input type="checkbox" id="s09"><span class="content"><span class="npc"><b>Nessa</b>:</span> <span class="gem">Quicksilver</span> · <span class="gem">Volley Support</span> · <span class="gem">Chance to Poison</span></span></label></li>
+    </ol>
+
+    <h3>Path to the prison</h3>
+    <ol class="steps">
+      <li><label><input type="checkbox" id="s10"><span class="content">The Submerged Passage</span></label></li>
+      <li><label><input type="checkbox" id="s11"><span class="content">The Flooded Depths</span></label></li>
+      <li><label><input type="checkbox" id="s12"><span class="content">The Ledge</span></label></li>
+      <li><label><input type="checkbox" id="s13"><span class="content">The Climb</span></label></li>
+      <li><label><input type="checkbox" id="s14"><span class="content">The Lower Prison <span class="badge">wp</span> <span class="badge">ho</span></span></label></li>
+      <li><label><input type="checkbox" id="s15"><span class="content"><span class="npc"><b>Nessa</b>:</span> <span class="gem">Faster Attacks</span> · <span class="gem">Shield Charge</span></span></label></li>
+    </ol>
+
+    <h3>Prison: trial &amp; Brutus</h3>
+    <ol class="steps">
+      <li><label><input type="checkbox" id="s16"><span class="content"><span class="npc"><b>Tarkleigh</b>:</span> <span class="book">Book of Skill</span></span></label></li>
+      <li><label><input type="checkbox" id="s17"><span class="content">The Lower Prison — <span class="trial">Trial</span></span></label></li>
+      <li><label><input type="checkbox" id="s18"><span class="content">The Upper Prison — flask chest: swap flask</span></label></li>
+      <li><label><input type="checkbox" id="s19"><span class="content">The Warden's Quarters → <span class="boss">Brutus</span> <span class="badge">cs</span></span></label></li>
+    </ol>
+
+    <h3>After Brutus</h3>
+    <ol class="steps">
+      <li><label><input type="checkbox" id="s20"><span class="content">Prisoner's Gate <span class="badge">wp</span> <span class="badge">ho</span></span></label></li>
+      <li><label><input type="checkbox" id="s21"><span class="content"><span class="npc"><b>Tarkleigh</b>:</span> <span class="gem">Precision</span> · <span class="npc"><b>Nessa</b>:</span> check her stock</span></label></li>
+      <li><label><input type="checkbox" id="s22"><span class="content">Prisoner's Gate</span></label></li>
+      <li><label><input type="checkbox" id="s23"><span class="content">The Ship Graveyard → <span class="boss">Fairgraves</span></span></label></li>
+    </ol>
+
+    <h3>End of the act</h3>
+    <ol class="steps">
+      <li><label><input type="checkbox" id="s24"><span class="content">The Cavern of Wrath <span class="badge">wp</span> <span class="badge">ho</span></span></label></li>
+      <li><label><input type="checkbox" id="s25"><span class="content"><span class="npc"><b>Bestel</b>:</span> <span class="book">Book of Skill</span></span></label></li>
+      <li><label><input type="checkbox" id="s26"><span class="content"><span class="npc"><b>Nessa</b>:</span> <span class="gem">Poisonous Concoction</span> (lvl 12) · <span class="gem">Lesser Multiple Projectiles</span> (lvl 8) · <span class="gem">Withering Step</span> (lvl 10)</span></label></li>
+      <li><label><input type="checkbox" id="s27"><span class="content">The Cavern of Wrath — run through</span></label></li>
+      <li><label><input type="checkbox" id="s28"><span class="content">The Cavern of Anger → <span class="boss">Merveil</span> — end of Act 1</span></label></li>
+    </ol>
+  </section>
+
+  <footer>Act 2 — coming soon. Colors and steps are easy to edit: see the comments in the code.</footer>
+
+</main>
+
+<script>
+  // checkboxes + progress
+  const KEY='poe330_act1';
+  const state=JSON.parse(localStorage.getItem(KEY)||'{}');
+  const boxes=[...document.querySelectorAll('input[type="checkbox"]')];
+  boxes.forEach(b=>{
+    if(state[b.id]) b.checked=true;
+    b.addEventListener('change',()=>{
+      state[b.id]=b.checked;
+      localStorage.setItem(KEY,JSON.stringify(state));
+      updateProgress();
+    });
+  });
+  function updateProgress(){
+    const done=boxes.filter(b=>b.checked).length;
+    document.getElementById('progress').textContent=done+' / '+boxes.length;
+  }
+  updateProgress();
+
+  // dark theme
+  const savedTheme=localStorage.getItem('poe330_theme');
+  if(savedTheme) document.documentElement.dataset.theme=savedTheme;
+  document.getElementById('themeBtn').addEventListener('click',()=>{
+    const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+    if(next==='light'){delete document.documentElement.dataset.theme; localStorage.removeItem('poe330_theme');}
+    else{document.documentElement.dataset.theme='dark'; localStorage.setItem('poe330_theme','dark');}
+  });
+</script>
+
 </body>
 </html>
