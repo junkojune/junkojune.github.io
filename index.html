@@ -90,11 +90,20 @@
 
   /* ---------- steps ---------- */
   ol.steps{list-style:none; counter-reset:step;}
-  ol.steps li{
-    counter-increment:step;
-    display:flex; align-items:flex-start; gap:12px;
-    padding:9px 4px; border-bottom:1px dashed var(--line);
-  }
+ol.steps li{
+  counter-increment:step;
+  display:flex; align-items:flex-start; gap:12px;
+  padding:9px 4px; border-bottom:1px dashed var(--line);
+}
+
+ol.steps label{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  flex:1;
+  min-width:0;
+  cursor:pointer;
+}
   ol.steps li:last-child{border-bottom:none;}
   ol.steps li::before{
     content:counter(step);
