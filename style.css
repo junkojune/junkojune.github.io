@@ -272,3 +272,80 @@ ol.steps label{
     padding-left:14px;
   }
 }
+
+/* ---------- skill gem layout ---------- */
+.gem-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-bottom:32px;
+}
+
+.gem-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:14px 12px;
+  min-width:0;
+}
+
+.skill-main{
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:9px 8px;
+  text-align:center;
+  font-weight:600;
+  line-height:1.5;
+  overflow-wrap:anywhere;
+}
+
+.skill-main small{
+  display:block;
+  font-size:11px;
+  font-weight:400;
+  color:var(--muted);
+}
+
+.support-list{
+  margin:10px 0 0 12px;
+  padding-left:13px;
+  border-left:1px solid var(--accent);
+}
+
+.support-list div{
+  position:relative;
+  padding:5px 0 5px 9px;
+  font-size:13px;
+  line-height:1.4;
+  overflow-wrap:anywhere;
+}
+
+.support-list div::before{
+  content:"";
+  position:absolute;
+  left:-13px;
+  top:0;
+  width:12px;
+  height:50%;
+  border-bottom:1px solid var(--accent);
+}
+
+.support-list div:last-child{
+  padding-bottom:2px;
+}
+
+.skill-main.standalone{
+  margin-bottom:9px;
+}
+
+.skill-main.standalone:last-child{
+  margin-bottom:0;
+}
+
+@media(max-width:760px){
+  .gem-grid{
+    grid-template-columns:1fr;
+  }
+}
+
