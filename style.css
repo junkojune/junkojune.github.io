@@ -5,7 +5,9 @@
     --muted:#8b867d;
     --line:#e5e1d8;
     --accent:#8f3b2f;
-    --gem:#c0392b;        /* skill gems */
+    --gem-dex:#26834a;    /* skill gems */
+    --gem-str:#c0392b;
+    --gem-int:#356ac3;        
     --book:#a97c00;       /* book of skill */
     --trial:#7d5ba6;      /* labyrinth trial */
     --boss:#2b2926;
@@ -18,7 +20,9 @@
     --muted:#8f8a81;
     --line:#2e2c28;
     --accent:#d98c7a;
-    --gem:#e06a55;
+    --gem-dex:#6fcf8a;
+    --gem-str:#ef7468;
+    --gem-int:#78a9ff;
     --book:#d9b24a;
     --trial:#b39ddb;
     --boss:#f0ece2;
@@ -204,7 +208,14 @@ ol.steps label{
   .content small{color:var(--muted);}
 
   /* ---------- color coding ---------- */
-  .gem{color:var(--gem); font-weight:600;}                       /* skill gems */
+  /* ---------- skill gem colors ---------- */
+    .gem{
+      font-weight:600;
+    }
+
+    .gem-dex{color:var(--gem-dex);}
+    .gem-str{color:var(--gem-str);}
+    .gem-int{color:var(--gem-int);}
   .book{color:var(--book); font-weight:600;}                      /* book of skill */
   .trial{color:var(--trial); font-weight:600;}                  /* trial */
   .boss{color:var(--boss); font-weight:700;}                     /* bosses */
