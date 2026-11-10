@@ -97,6 +97,10 @@
 }
 
 .nav-link.active::before{
+  content:"";
+}
+
+.nav-link.clicked::before{
   content:"›";
   position:absolute;
   left:7px;
