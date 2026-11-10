@@ -9,7 +9,7 @@
     --book:#a97c00;       /* book of skill */
     --trial:#7d5ba6;      /* labyrinth trial */
     --boss:#2b2926;
-    --ascendancy:#008b
+    --ascendancy:#008b;
   }
   [data-theme="dark"]{
     --bg:#141311;
@@ -22,7 +22,7 @@
     --book:#d9b24a;
     --trial:#b39ddb;
     --boss:#f0ece2;
-    --ascendancy:#008b      
+    --ascendancy:#008b;      
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
