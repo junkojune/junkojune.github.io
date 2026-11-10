@@ -9,7 +9,7 @@
     --book:#a97c00;       /* book of skill */
     --trial:#7d5ba6;      /* labyrinth trial */
     --boss:#2b2926;
-    --ascendancy:#008b;
+    --ascendancy:#008b8b;
   }
   [data-theme="dark"]{
     --bg:#141311;
@@ -22,7 +22,7 @@
     --book:#d9b24a;
     --trial:#b39ddb;
     --boss:#f0ece2;
-    --ascendancy:#008b;      
+    --ascendancy:#008b8b;    
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -189,6 +189,7 @@ ol.steps label{
   .boss{color:var(--boss); font-weight:700;}                     /* bosses */
   .npc{color:var(--muted); font-style:italic;}                    /* vendors */
   .npc b{font-style:normal; font-weight:600; color:var(--text);}
+  .ascendancy{color:var(--ascendancy); font-weight:600;}
 
   .badge{
     display:inline-block; font-size:11px; font-weight:700; letter-spacing:.05em;
