@@ -87,7 +87,21 @@
   text-decoration:none;
   font-size:14px;
   line-height:1.4;
-  padding:6px 8px;
+  padding:6px 8px 6px 20px;
+  position:relative;
+}
+
+.nav-link.active{
+  color:var(--accent);
+  font-weight:700;
+}
+
+.nav-link.active::before{
+  content:"›";
+  position:absolute;
+  left:7px;
+  font-size:18px;
+  line-height:1.1;
 }
 
 .placeholder-section{
