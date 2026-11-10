@@ -51,3 +51,8 @@ if('IntersectionObserver' in window){
   },{rootMargin:'-18% 0px -65% 0px',threshold:[0,0.1,0.25,0.5]});
   navSections.forEach(section=>observer.observe(section));
 }
+function copyRegex(){
+  navigator.clipboard.writeText(
+    document.getElementById('campaign-regex').textContent
+  );
+}
