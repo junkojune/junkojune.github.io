@@ -403,4 +403,16 @@ ol.steps label{
 .skill-main small{
   font-size:12px;
 }
+.optional-supports{
+  margin-top:10px;
+  padding-top:8px;
+  border-top:1px solid var(--line);
+}
 
+.optional-label{
+  margin-bottom:5px;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.1em;
+}
