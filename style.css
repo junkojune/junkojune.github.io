@@ -124,14 +124,7 @@ ol.steps label{
   .boss{color:var(--boss); font-weight:700;}                     /* bosses */
   .npc{color:var(--muted); font-style:italic;}                    /* vendors */
   .npc b{font-style:normal; font-weight:600; color:var(--text);}
-
-  .badge{
-    display:inline-block; font-size:11px; font-weight:700; letter-spacing:.05em;
-    color:var(--muted); background:var(--panel); border:1px solid var(--line);
-    border-radius:4px; padding:0 6px; line-height:1.7; vertical-align:1px;
-    cursor:help; user-select:none; margin-left:4px; white-space:nowrap;
-  }
-
+ 
   footer{color:var(--muted); font-size:13px; text-align:center; margin-top:64px;}
 
   @media (max-width:520px){
