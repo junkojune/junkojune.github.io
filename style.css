@@ -360,3 +360,47 @@ ol.steps label{
   }
 }
 
+
+/* ---------- skill gem subsections ---------- */
+#skill-gems h3{
+  font-size:15px;
+  color:var(--text);
+  letter-spacing:.08em;
+  margin:42px 0 18px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--line);
+}
+
+#skill-gems h3::after{
+  display:none;
+}
+
+/* Gem cards */
+.gem-card{
+  padding:16px;
+}
+
+/* Main skill */
+.skill-main{
+  font-size:16px;
+  padding:12px 10px;
+}
+
+/* Support gems */
+.support-list{
+  margin-top:12px;
+  margin-left:14px;
+  padding-left:16px;
+}
+
+.support-list div{
+  font-size:15px;
+  padding:7px 0 7px 10px;
+  line-height:1.5;
+}
+
+.support-list small,
+.skill-main small{
+  font-size:12px;
+}
+
