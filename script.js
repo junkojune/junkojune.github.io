@@ -24,3 +24,28 @@
     if(next==='light'){delete document.documentElement.dataset.theme; localStorage.removeItem('poe330_theme');}
     else{document.documentElement.dataset.theme='dark'; localStorage.setItem('poe330_theme','dark');}
   });
+
+
+  // Highlight the navigation item for the section currently in view.
+  const navLinks=[...document.querySelectorAll('.nav-link')];
+  const navSections=navLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
+
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>{
+      const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
+      if(!visible.length) return;
+      const currentId=visible[0].target.id;
+      navLinks.forEach(link=>{
+        const active=link.getAttribute('href')==='#'+currentId;
+        link.classList.toggle('active',active);
+        if(active && window.matchMedia('(max-width: 760px)').matches){
+          link.scrollIntoView({block:'nearest',inline:'nearest'});
+        }
+      });
+    },{rootMargin:'-18% 0px -65% 0px',threshold:[0,0.1,0.25,0.5]});
+    navSections.forEach(section=>observer.observe(section));
+  }
+
+  navLinks.forEach(link=>link.addEventListener('click',()=>{
+    navLinks.forEach(item=>item.classList.toggle('active',item===link));
+  }));

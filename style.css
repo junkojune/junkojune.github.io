@@ -34,6 +34,19 @@
   }
   .wrap{max-width:720px; margin:0 auto; padding:0 20px;}
 
+  /* ---------- page layout + sidebar ---------- */
+  .page-layout{display:grid; grid-template-columns:160px minmax(0,720px); gap:40px; max-width:1000px; margin:0 auto; padding:0 20px; align-items:start;}
+  .page-layout main.wrap{width:100%; max-width:none; margin:0; padding:48px 0 80px;}
+  .sidebar{position:sticky; top:76px; align-self:start; padding:48px 0 24px; max-height:calc(100vh - 76px); overflow-y:auto;}
+  .nav-group + .nav-group{margin-top:28px;}
+  .nav-title{color:var(--muted); font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; margin:0 0 9px 10px;}
+  .nav-link{display:block; color:var(--muted); text-decoration:none; font-size:14px; line-height:1.4; padding:7px 10px; border-left:2px solid transparent; border-radius:0 5px 5px 0; transition:color .15s,background .15s,border-color .15s;}
+  .nav-link:hover{color:var(--text); background:var(--panel);}
+  .nav-link.active{color:var(--accent); background:var(--panel); border-left-color:var(--accent); font-weight:600;}
+  .placeholder-section{min-height:220px; padding-top:28px;}
+  .section-status{font-size:12px; color:var(--muted); font-weight:500;}
+
+
   /* ---------- header ---------- */
   header{
     position:sticky; top:0; z-index:10;
@@ -134,6 +147,17 @@ ol.steps label{
 
   footer{color:var(--muted); font-size:13px; text-align:center; margin-top:64px;}
 
+
+  @media (max-width:760px){
+    .page-layout{display:block; padding:0;}
+    .sidebar{position:sticky; top:52px; z-index:9; display:flex; gap:22px; padding:10px 20px; max-height:none; overflow-x:auto; overflow-y:hidden; background:color-mix(in srgb,var(--bg) 94%,transparent); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); scrollbar-width:thin;}
+    .nav-group{display:flex; align-items:center; gap:4px; flex-shrink:0;}
+    .nav-group + .nav-group{margin-top:0; padding-left:16px; border-left:1px solid var(--line);}
+    .nav-title{display:none;}
+    .nav-link{white-space:nowrap; padding:7px 9px; border-left:0; border-bottom:2px solid transparent; border-radius:5px 5px 0 0;}
+    .nav-link.active{border-bottom-color:var(--accent);}
+    .page-layout main.wrap{padding:34px 20px 70px;}
+  }
   @media (max-width:520px){
     body{font-size:16px;}
     h1{font-size:25px;}
