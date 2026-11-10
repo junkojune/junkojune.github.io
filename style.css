@@ -416,3 +416,100 @@ ol.steps label{
   font-weight:600;
   letter-spacing:.1em;
 }
+
+/* ---------- gear section ---------- */
+#gear h3{
+  font-size:15px;
+  color:var(--text);
+  letter-spacing:.08em;
+  margin:32px 0 16px;
+  padding-bottom:10px;
+  border-bottom:1px solid var(--line);
+}
+
+#gear h3::after{
+  display:none;
+}
+
+.gear-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  margin-bottom:32px;
+}
+
+.gear-card{
+  min-width:0;
+  padding:13px 15px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:5px;
+}
+
+.gear-top{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  min-width:0;
+}
+
+.gear-name{
+  color:var(--text);
+  font-size:14px;
+  font-weight:700;
+  overflow-wrap:anywhere;
+}
+
+.gear-type{
+  color:var(--muted);
+  font-size:12px;
+}
+
+.gear-info{
+  color:var(--muted);
+  font-size:11px;
+  margin-top:3px;
+}
+
+.gear-note{
+  color:var(--text);
+  font-size:12px;
+  margin-top:4px;
+  opacity:.8;
+}
+
+.gear-tag{
+  display:inline-block;
+  margin-top:5px;
+  padding:3px 7px;
+  border-radius:4px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.04em;
+}
+
+.gear-tag.mandatory{
+  color:var(--accent);
+  background:color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+.gear-tag.optional{
+  color:var(--muted);
+  background:var(--bg);
+}
+
+.gear-tag.endgame{
+  color:var(--trial);
+  background:color-mix(in srgb, var(--trial) 10%, transparent);
+}
+
+@media(max-width:600px){
+  .gear-grid{
+    grid-template-columns:1fr;
+  }
+}
+
