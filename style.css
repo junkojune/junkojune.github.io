@@ -706,3 +706,14 @@ ol.steps label{
 .tips-table tbody tr:last-child td{
   border-bottom:none;
 }
+
+.tips-table h4{
+  margin:0;
+  padding:10px 16px;
+  color:var(--text);
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+  font-size:13px;
+  font-weight:700;
+  text-align:center;
+}
