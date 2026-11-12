@@ -232,9 +232,9 @@ ol.steps label{
 }
 
 .npc{
-  color:var(--muted);
-  font-style:italic;
-  font-weight:400;
+  color:var(--text);
+  font-weight:700;
+  font-style:normal;
 }
   .ascendancy{color:var(--ascendancy); font-weight:600;}
 
