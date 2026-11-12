@@ -653,3 +653,56 @@ ol.steps label{
     font-size:18px;
   }
 }
+
+/* Useful Tips */
+.tips-list{
+  padding-left:24px;
+  margin:12px 0 20px;
+}
+
+.tips-list li{
+  padding-left:4px;
+  margin:8px 0;
+  line-height:1.6;
+}
+
+.tips-table{
+  width:min(100%, 360px);
+  margin:20px 0;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:8px;
+}
+
+.tips-table table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+.tips-table th,
+.tips-table td{
+  padding:9px 16px;
+  text-align:center;
+  border-bottom:1px solid var(--line);
+}
+
+.tips-table th{
+  color:var(--muted);
+  background:var(--bg);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.04em;
+}
+
+.tips-table td{
+  color:var(--text);
+  font-size:14px;
+}
+
+.tips-table tbody tr:nth-child(even){
+  background:color-mix(in srgb, var(--bg) 55%, var(--panel));
+}
+
+.tips-table tbody tr:last-child td{
+  border-bottom:none;
+}
