@@ -230,6 +230,24 @@ ol.steps label{
     cursor:default; user-select:none; margin-left:4px; white-space:nowrap;
   }
 
+.badge-cs{
+  color:var(--accent);
+  background:color-mix(in srgb, var(--accent) 13%, var(--panel));
+  border-color:color-mix(in srgb, var(--accent) 40%, var(--line));
+}
+
+.badge-wp{
+  color:var(--gem-int);
+  background:color-mix(in srgb, var(--gem-int) 13%, var(--panel));
+  border-color:color-mix(in srgb, var(--gem-int) 40%, var(--line));
+}
+
+.badge-ho{
+  color:var(--gem-dex);
+  background:color-mix(in srgb, var(--gem-dex) 13%, var(--panel));
+  border-color:color-mix(in srgb, var(--gem-dex) 40%, var(--line));
+}
+
   footer{color:var(--muted); font-size:13px; text-align:center; margin-top:64px;}
 
 
@@ -599,10 +617,22 @@ ol.steps label{
   cursor:pointer;
   font:inherit;
   font-size:12px;
+  transition:transform .12s ease, background .12s ease, border-color .12s ease;
 }
 
 .copy-btn:hover{
   border-color:var(--accent);
+}
+
+.copy-btn:active{
+  transform:scale(.94);
+  background:color-mix(in srgb, var(--accent) 15%, var(--bg));
+}
+
+.copy-btn.copied{
+  color:var(--gem-dex);
+  border-color:var(--gem-dex);
+  background:color-mix(in srgb, var(--gem-dex) 12%, var(--bg));
 }
 
 @media(max-width:600px){
