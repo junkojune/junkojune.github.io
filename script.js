@@ -41,13 +41,16 @@ if('IntersectionObserver' in window){
     const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
     if(!visible.length) return;
     const currentId=visible[0].target.id;
-    navLinks.forEach(link=>{
-      const active=link.getAttribute('href')==='#'+currentId;
-      link.classList.toggle('active',active);
-      if(active && window.matchMedia('(max-width: 760px)').matches){
-        link.scrollIntoView({block:'nearest',inline:'nearest'});
-      }
-    });
+   navLinks.forEach(link=>{
+  const active=link.getAttribute('href')==='#'+currentId;
+
+  link.classList.toggle('active',active);
+  link.classList.toggle('clicked',active);
+
+  if(active && window.matchMedia('(max-width: 760px)').matches){
+    link.scrollIntoView({block:'nearest',inline:'nearest'});
+  }
+});
   },{rootMargin:'-18% 0px -65% 0px',threshold:[0,0.1,0.25,0.5]});
   navSections.forEach(section=>observer.observe(section));
 }
